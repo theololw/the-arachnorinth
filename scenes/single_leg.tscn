@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bafvq4lpvidbu"]
+
+[ext_resource type="Script" uid="uid://do331kjd0yw5f" path="res://scripts/single_leg.gd" id="1_g146v"]
+
+[node name="leg" type="Node2D"]
+script = ExtResource("1_g146v")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(384, 360, 448, 360, 512, 360)
+
+[node name="node1" type="Node2D" parent="." groups=["segment"]]
+position = Vector2(384, 360)
+
+[node name="Polygon2D" type="Polygon2D" parent="node1"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node2" type="Node2D" parent="." groups=["segment"]]
+position = Vector2(448, 360)
+
+[node name="Polygon2D" type="Polygon2D" parent="node2"]
+color = Color(0.521141, 0.521141, 0.521141, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node3" type="Node2D" parent="." groups=["segment"]]
+position = Vector2(512, 360)
+
+[node name="Polygon2D" type="Polygon2D" parent="node3"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="body" type="Node2D" parent="."]
+position = Vector2(576, 352)
+
+[node name="leg_anchor" type="Node2D" parent="body"]
+position = Vector2(-24, 0)
+
+[node name="foot_placement" type="Node2D" parent="body"]
+position = Vector2(-88, -72)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

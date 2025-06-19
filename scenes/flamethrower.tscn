@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0rf5w5ochfnw"]
+
+[ext_resource type="Script" uid="uid://dattg4qubw5i" path="res://scripts/flamethrower.gd" id="1_1b6hs"]
+[ext_resource type="Texture2D" uid="uid://bvvfl2gy8skhk" path="res://assets/flamethrower.png" id="1_rok4f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkefd"]
+radius = 96.3328
+
+[node name="flamethrower" type="Node2D"]
+script = ExtResource("1_1b6hs")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(24, 64)
+polygon = PackedVector2Array(56, 48, 184, 48, 192, 72, 72, 96)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0.384314)
+polygon = PackedVector2Array(144, 0, 184, 88, 280, 96, 208, 168, 224, 264, 144, 216, 64, 264, 80, 168, 8, 96, 104, 88)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(144, 128)
+energy = 2.1
+texture = ExtResource("1_rok4f")
+texture_scale = 0.18
+
+[node name="flamethrower" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flamethrower"]
+position = Vector2(136, 128)
+shape = SubResource("CircleShape2D_rkefd")
+
+[connection signal="area_entered" from="flamethrower" to="." method="_on_flamethrower_area_entered"]

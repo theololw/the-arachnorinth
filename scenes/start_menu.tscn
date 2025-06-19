@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://2r6ilys5f5w1"]
+
+[ext_resource type="Shader" uid="uid://bs85p86kyefpt" path="res://materials/posterization.gdshader" id="1_fcv5n"]
+[ext_resource type="Script" uid="uid://bca0b43t1k2i" path="res://scenes/start_menu.gd" id="1_nxjfj"]
+[ext_resource type="Texture2D" uid="uid://d31oylnd8wr2m" path="res://assets/grayscale.png" id="2_4v6gu"]
+[ext_resource type="Shader" uid="uid://cy7cydg0n8y4y" path="res://materials/main.gdshader" id="2_u4qax"]
+[ext_resource type="Texture2D" uid="uid://cd0oyj8i8ilgp" path="res://assets/palette_2.png" id="3_nxjfj"]
+[ext_resource type="FontFile" uid="uid://ctnrkjrjmjvsc" path="res://assets/Quantico/Quantico-Bold.ttf" id="4_u4qax"]
+[ext_resource type="PackedScene" uid="uid://ek7boxjyj2tw" path="res://scenes/breakdance.tscn" id="5_5byqq"]
+[ext_resource type="PackedScene" uid="uid://bkf0ruyso3huk" path="res://scenes/spider_pack.tscn" id="6_4v6gu"]
+[ext_resource type="FontFile" uid="uid://3afk8506cfry" path="res://assets/Quantico/Quantico-Regular.ttf" id="9_5byqq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5byqq"]
+shader = ExtResource("2_u4qax")
+shader_parameter/vignette_intensity = 0.95
+shader_parameter/vignette_opacity = 0.318
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e58y3"]
+shader = ExtResource("1_fcv5n")
+shader_parameter/brightness = -0.18
+shader_parameter/source_palette = ExtResource("2_4v6gu")
+shader_parameter/target_palette = ExtResource("3_nxjfj")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nxjfj"]
+vertices = PackedVector2Array(560.633, 117.188, 594.188, 43.3203, 684.617, 161.578, 1.65625, 352.289, -13.5313, 18, 40.7891, 18, 64.0391, 87.75, 150.563, 119.211, 158.07, 209.203, 183.461, 370, 224.828, 413.852, 464.953, 370, 600.906, 374.672, 481.617, 219.891)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(3, 6, 7, 8), PackedInt32Array(3, 8, 9), PackedInt32Array(10, 3, 9), PackedInt32Array(10, 9, 11, 12), PackedInt32Array(2, 12, 11, 13, 0)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(160, 112, 168, 208, 240, 280, 392, 272, 448, 128, 536, 88, 592, 24, 696, 160, 608, 384, 224, 424, -8, 360, -24, 8, 48, 8, 72, 80)])
+
+[node name="start_menu" type="Node2D"]
+script = ExtResource("1_nxjfj")
+
+[node name="vignette" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ColorRect2" type="ColorRect" parent="vignette"]
+material = SubResource("ShaderMaterial_5byqq")
+offset_right = 632.0
+offset_bottom = 360.0
+scale = Vector2(1.00098, 1)
+mouse_filter = 2
+
+[node name="shaders" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="shaders"]
+material = SubResource("ShaderMaterial_e58y3")
+offset_right = 632.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+offset_right = 632.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("4_u4qax")
+theme_override_font_sizes/font_size = 41
+text = "THE ARACHNORINTH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="breakdance" parent="." instance=ExtResource("5_5byqq")]
+position = Vector2(344, 256)
+
+[node name="spider" parent="." instance=ExtResource("6_4v6gu")]
+position = Vector2(-176, 136)
+
+[node name="spider2" parent="." instance=ExtResource("6_4v6gu")]
+position = Vector2(-64, 336)
+
+[node name="spider3" parent="." instance=ExtResource("6_4v6gu")]
+position = Vector2(712, 384)
+
+[node name="spider4" parent="." instance=ExtResource("6_4v6gu")]
+position = Vector2(824, 168)
+
+[node name="spider5" parent="." instance=ExtResource("6_4v6gu")]
+position = Vector2(480, 512)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_nxjfj")
+
+[node name="play" type="Button" parent="."]
+offset_left = 264.0
+offset_top = 169.0
+offset_right = 368.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("9_5byqq")
+theme_override_font_sizes/font_size = 14
+text = "start"
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]

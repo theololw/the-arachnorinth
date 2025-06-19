@@ -1,0 +1,658 @@
+[gd_scene load_steps=12 format=3 uid="uid://bkf0ruyso3huk"]
+
+[ext_resource type="Script" uid="uid://s4ytaq47ky7m" path="res://scripts/player.gd" id="1_6jve6"]
+[ext_resource type="Texture2D" uid="uid://b3kjlc2wssnog" path="res://assets/explosion-table-169-240.png" id="2_xvgd5"]
+[ext_resource type="Script" uid="uid://bxxr07p357gml" path="res://scripts/spider.gd" id="2_yr6pc"]
+[ext_resource type="AudioStream" uid="uid://pyaywtfb7w6k" path="res://assets/explosion-80108.mp3" id="3_55m2m"]
+[ext_resource type="Script" uid="uid://do331kjd0yw5f" path="res://scripts/single_leg.gd" id="3_yr6pc"]
+[ext_resource type="Curve" uid="uid://oxj4qgjj04py" path="res://spider_leg.tres" id="4_6fvl4"]
+[ext_resource type="AudioStream" uid="uid://cogitdjnt5go0" path="res://assets/488340__leonseptavaux__ants_sound_contact_mic_1.wav" id="4_6u00c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kdol"]
+radius = 88.0
+
+[sub_resource type="Animation" id="Animation_6u00c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion-table-169-240:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../spider:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../leg:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../leg2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../leg3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../leg4:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../leg5:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../leg6:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Explosion-table-169-240:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_55m2m"]
+resource_name = "explosion"
+length = 1.5
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion-table-169-240:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.2499, 0.3332, 0.4165, 0.4998, 0.5831, 0.6664, 0.7497, 0.833, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../spider:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../leg:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../leg2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../leg3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../leg4:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../leg5:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../leg6:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Explosion-table-169-240:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ow3mb"]
+_data = {
+&"RESET": SubResource("Animation_6u00c"),
+&"explosion": SubResource("Animation_55m2m")
+}
+
+[node name="spider" type="Node2D" groups=["spider"]]
+
+[node name="spider_navigator" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_6jve6")
+
+[node name="Polygon2D" type="Polygon2D" parent="spider_navigator"]
+visible = false
+polygon = PackedVector2Array(-40, 64, -16, 0, -32, -24, 0, -56, 32, -24, 16, 0, 40, 64, 0, 32)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="spider_navigator"]
+avoidance_enabled = true
+radius = 40.3
+debug_use_custom = true
+debug_path_custom_color = Color(0, 1, 0, 1)
+
+[node name="spider_collisions" type="CollisionPolygon2D" parent="spider_navigator"]
+polygon = PackedVector2Array(-64, 16, -32, 16, -8, 16, -8, -16, -32, -16, -64, -16)
+
+[node name="raycasts" type="Node2D" parent="spider_navigator"]
+
+[node name="wallCast" type="RayCast2D" parent="spider_navigator/raycasts"]
+target_position = Vector2(400, 0)
+hit_from_inside = true
+
+[node name="playerCast" type="RayCast2D" parent="spider_navigator/raycasts"]
+target_position = Vector2(400, 0)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="fire_collider" type="Area2D" parent="spider_navigator"]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spider_navigator/fire_collider"]
+shape = SubResource("CircleShape2D_4kdol")
+
+[node name="Explosion-table-169-240" type="Sprite2D" parent="spider_navigator"]
+visible = false
+z_index = 5
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_xvgd5")
+hframes = 5
+vframes = 4
+frame = 11
+
+[node name="explosion" type="AnimationPlayer" parent="spider_navigator"]
+libraries = {
+&"": SubResource("AnimationLibrary_ow3mb")
+}
+speed_scale = 2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="spider_navigator"]
+stream = ExtResource("3_55m2m")
+volume_db = -4.0
+
+[node name="walking_noise" type="AudioStreamPlayer2D" parent="spider_navigator"]
+stream = ExtResource("4_6u00c")
+volume_db = 10.0
+autoplay = true
+
+[node name="Label" type="Label" parent="spider_navigator"]
+offset_left = -48.0
+offset_top = -120.0
+offset_right = 88.0
+offset_bottom = -97.0
+
+[node name="spider" type="Node2D" parent="."]
+script = ExtResource("2_yr6pc")
+
+[node name="node1" type="Node2D" parent="spider"]
+
+[node name="Polygon2D" type="Polygon2D" parent="spider/node1"]
+position = Vector2(16, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-80, -8, -72, -16, -50, -15, -40, -8, -24, -3, -17, -8, -4, -5, -11, -1, -5, 5, -17, 7, -24, 3, -40, 8, -50, 15, -72, 16, -80, 8)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="spider/node1"]
+remote_path = NodePath("../../../leg/body")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="spider/node1"]
+remote_path = NodePath("../../../leg2/body")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="spider/node1"]
+remote_path = NodePath("../../../leg3/body")
+
+[node name="RemoteTransform2D4" type="RemoteTransform2D" parent="spider/node1"]
+remote_path = NodePath("../../../leg4/body")
+
+[node name="RemoteTransform2D5" type="RemoteTransform2D" parent="spider/node1"]
+remote_path = NodePath("../../../leg5/body")
+
+[node name="RemoteTransform2D6" type="RemoteTransform2D" parent="spider/node1"]
+remote_path = NodePath("../../../leg6/body")
+
+[node name="leg" type="Node2D" parent="."]
+script = ExtResource("3_yr6pc")
+
+[node name="Line2D" type="Line2D" parent="leg"]
+position = Vector2(-462, -414)
+points = PackedVector2Array(384, 360, 448, 360, 512, 360)
+width_curve = ExtResource("4_6fvl4")
+default_color = Color(0, 0, 0, 1)
+
+[node name="node1" type="Node2D" parent="leg" groups=["segment"]]
+position = Vector2(-78, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg/node1"]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node2" type="Node2D" parent="leg" groups=["segment"]]
+position = Vector2(-14, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg/node2"]
+visible = false
+color = Color(0.521141, 0.521141, 0.521141, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node3" type="Node2D" parent="leg" groups=["segment"]]
+position = Vector2(50, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg/node3"]
+visible = false
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="body" type="Node2D" parent="leg"]
+
+[node name="leg_anchor" type="Node2D" parent="leg/body"]
+position = Vector2(0, 8)
+
+[node name="foot_placement" type="Node2D" parent="leg/body"]
+position = Vector2(120, 32)
+
+[node name="Timer" type="Timer" parent="leg"]
+wait_time = 0.01
+autostart = true
+
+[node name="leg2" type="Node2D" parent="."]
+script = ExtResource("3_yr6pc")
+
+[node name="Line2D" type="Line2D" parent="leg2"]
+position = Vector2(-462, -414)
+points = PackedVector2Array(384, 360, 448, 360, 512, 360)
+width_curve = ExtResource("4_6fvl4")
+default_color = Color(0, 0, 0, 1)
+
+[node name="node1" type="Node2D" parent="leg2" groups=["segment"]]
+position = Vector2(-78, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg2/node1"]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node2" type="Node2D" parent="leg2" groups=["segment"]]
+position = Vector2(-14, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg2/node2"]
+visible = false
+color = Color(0.521141, 0.521141, 0.521141, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node3" type="Node2D" parent="leg2" groups=["segment"]]
+position = Vector2(50, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg2/node3"]
+visible = false
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="body" type="Node2D" parent="leg2"]
+
+[node name="leg_anchor" type="Node2D" parent="leg2/body"]
+position = Vector2(0, -8)
+
+[node name="foot_placement" type="Node2D" parent="leg2/body"]
+position = Vector2(120, -32)
+
+[node name="Timer" type="Timer" parent="leg2"]
+wait_time = 0.01
+autostart = true
+
+[node name="leg3" type="Node2D" parent="."]
+script = ExtResource("3_yr6pc")
+
+[node name="Line2D" type="Line2D" parent="leg3"]
+position = Vector2(-462, -414)
+points = PackedVector2Array(384, 360, 448, 360, 512, 360)
+width_curve = ExtResource("4_6fvl4")
+default_color = Color(0, 0, 0, 1)
+
+[node name="node1" type="Node2D" parent="leg3" groups=["segment"]]
+position = Vector2(-78, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg3/node1"]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node2" type="Node2D" parent="leg3" groups=["segment"]]
+position = Vector2(-14, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg3/node2"]
+visible = false
+color = Color(0.521141, 0.521141, 0.521141, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node3" type="Node2D" parent="leg3" groups=["segment"]]
+position = Vector2(50, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg3/node3"]
+visible = false
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="body" type="Node2D" parent="leg3"]
+
+[node name="leg_anchor" type="Node2D" parent="leg3/body"]
+position = Vector2(0, -8)
+
+[node name="foot_placement" type="Node2D" parent="leg3/body"]
+position = Vector2(80, -88)
+
+[node name="Timer" type="Timer" parent="leg3"]
+wait_time = 0.01
+autostart = true
+
+[node name="leg4" type="Node2D" parent="."]
+script = ExtResource("3_yr6pc")
+
+[node name="Line2D" type="Line2D" parent="leg4"]
+position = Vector2(-462, -414)
+points = PackedVector2Array(384, 360, 448, 360, 512, 360)
+width_curve = ExtResource("4_6fvl4")
+default_color = Color(0, 0, 0, 1)
+
+[node name="node1" type="Node2D" parent="leg4" groups=["segment"]]
+position = Vector2(-78, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg4/node1"]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node2" type="Node2D" parent="leg4" groups=["segment"]]
+position = Vector2(-14, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg4/node2"]
+visible = false
+color = Color(0.521141, 0.521141, 0.521141, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node3" type="Node2D" parent="leg4" groups=["segment"]]
+position = Vector2(50, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg4/node3"]
+visible = false
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="body" type="Node2D" parent="leg4"]
+
+[node name="leg_anchor" type="Node2D" parent="leg4/body"]
+position = Vector2(0, 8)
+
+[node name="foot_placement" type="Node2D" parent="leg4/body"]
+position = Vector2(80, 80)
+
+[node name="Timer" type="Timer" parent="leg4"]
+wait_time = 0.01
+autostart = true
+
+[node name="leg5" type="Node2D" parent="."]
+script = ExtResource("3_yr6pc")
+
+[node name="Line2D" type="Line2D" parent="leg5"]
+position = Vector2(-462, -414)
+points = PackedVector2Array(384, 360, 448, 360, 512, 360)
+width_curve = ExtResource("4_6fvl4")
+default_color = Color(0, 0, 0, 1)
+
+[node name="node1" type="Node2D" parent="leg5" groups=["segment"]]
+position = Vector2(-78, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg5/node1"]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node2" type="Node2D" parent="leg5" groups=["segment"]]
+position = Vector2(-14, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg5/node2"]
+visible = false
+color = Color(0.521141, 0.521141, 0.521141, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node3" type="Node2D" parent="leg5" groups=["segment"]]
+position = Vector2(50, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg5/node3"]
+visible = false
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="body" type="Node2D" parent="leg5"]
+
+[node name="leg_anchor" type="Node2D" parent="leg5/body"]
+position = Vector2(0, 8)
+
+[node name="foot_placement" type="Node2D" parent="leg5/body"]
+position = Vector2(16, 96)
+
+[node name="Timer" type="Timer" parent="leg5"]
+wait_time = 0.01
+autostart = true
+
+[node name="leg6" type="Node2D" parent="."]
+script = ExtResource("3_yr6pc")
+
+[node name="Line2D" type="Line2D" parent="leg6"]
+position = Vector2(-462, -414)
+points = PackedVector2Array(384, 360, 448, 360, 512, 360)
+width_curve = ExtResource("4_6fvl4")
+default_color = Color(0, 0, 0, 1)
+
+[node name="node1" type="Node2D" parent="leg6" groups=["segment"]]
+position = Vector2(-78, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg6/node1"]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node2" type="Node2D" parent="leg6" groups=["segment"]]
+position = Vector2(-14, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg6/node2"]
+visible = false
+color = Color(0.521141, 0.521141, 0.521141, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node3" type="Node2D" parent="leg6" groups=["segment"]]
+position = Vector2(50, -54)
+
+[node name="Polygon2D" type="Polygon2D" parent="leg6/node3"]
+visible = false
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="body" type="Node2D" parent="leg6"]
+
+[node name="leg_anchor" type="Node2D" parent="leg6/body"]
+position = Vector2(0, -8)
+
+[node name="foot_placement" type="Node2D" parent="leg6/body"]
+position = Vector2(8, -96)
+
+[node name="Timer" type="Timer" parent="leg6"]
+wait_time = 0.01
+autostart = true
+
+[connection signal="animation_finished" from="spider_navigator/explosion" to="spider_navigator" method="_on_explosion_animation_finished"]
+[connection signal="timeout" from="leg/Timer" to="leg" method="_on_timer_timeout"]
+[connection signal="timeout" from="leg2/Timer" to="leg2" method="_on_timer_timeout"]
+[connection signal="timeout" from="leg3/Timer" to="leg3" method="_on_timer_timeout"]
+[connection signal="timeout" from="leg4/Timer" to="leg4" method="_on_timer_timeout"]
+[connection signal="timeout" from="leg5/Timer" to="leg5" method="_on_timer_timeout"]
+[connection signal="timeout" from="leg6/Timer" to="leg6" method="_on_timer_timeout"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cup82ggclavgt"]
+
+[ext_resource type="Script" uid="uid://bf75b7iuhtk2b" path="res://scripts/sign.gd" id="1_8yyji"]
+[ext_resource type="FontFile" uid="uid://ctnrkjrjmjvsc" path="res://assets/Quantico/Quantico-Bold.ttf" id="3_8yyji"]
+[ext_resource type="Texture2D" uid="uid://crq7lkw2pqa0u" path="res://assets/Wooden_Sign_PNG_Clipart_Image.png" id="3_qkam6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4irdt"]
+radius = 104.0
+
+[node name="sign" type="Node2D"]
+script = ExtResource("1_8yyji")
+
+[node name="WoodenSignPngClipartImage2" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("3_qkam6")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4irdt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 88.0
+offset_top = 40.0
+offset_right = 552.0
+offset_bottom = 144.0
+theme_override_fonts/font = ExtResource("3_8yyji")
+text = "placeholder"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

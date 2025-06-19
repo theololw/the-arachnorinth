@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfselcdo2x462"]
+
+[ext_resource type="Script" uid="uid://bx1i8pqw4m3i7" path="res://scripts/three_nodes_code.gd" id="1_ub6p2"]
+
+[node name="Group of nodes" type="Node2D"]
+script = ExtResource("1_ub6p2")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="node1" type="Node2D" parent="." groups=["segment"]]
+position = Vector2(128, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="node1"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node2" type="Node2D" parent="." groups=["segment"]]
+position = Vector2(192, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="node2"]
+color = Color(0.521141, 0.521141, 0.521141, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="node3" type="Node2D" parent="." groups=["segment"]]
+position = Vector2(256, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="node3"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
